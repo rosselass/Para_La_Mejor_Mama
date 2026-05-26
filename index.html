@@ -1,6 +1,5 @@
-/*PARA LA MEJOR MAMA DE ESTE MUNDO, AUNQUE TERCA SIEMPRE SONRIENTE c:*/
-
 <!DOCTYPE html>
+<!--PARA LA MEJOR MAMA DE ESTE MUNDO. SIEMPRE A SU MANERA, SIEMPRE SORIENTE c:-->
 <html lang="es">
 <head>
 <meta charset="UTF-8"/>
@@ -14,6 +13,33 @@ img{
   max-width:100%;
   height:auto;
   display:block;
+}
+
+button{
+  font:inherit;
+  -webkit-appearance:none;
+  appearance:none;
+  -webkit-tap-highlight-color:transparent;
+  background:none;
+}
+
+button:focus{
+  outline:none;
+}
+
+button:focus-visible{
+  outline:2px solid rgba(240,112,144,.6);
+  outline-offset:4px;
+}
+
+.play-btn,
+.play-btn span,
+#playIcon{
+  color:#fff !important;
+  -webkit-text-fill-color:#fff;
+  font-family:Arial, Helvetica, sans-serif;
+  font-weight:700;
+  text-decoration:none;
 }
 
 html,body{
@@ -368,7 +394,7 @@ body{
 }
 .mama-photo-frame{
   width:100%;
-  max-width:320px;
+  max-width:520px;
   margin:0 auto 28px;
   padding:6px;
 
@@ -466,7 +492,9 @@ background:#120008;
       </div>
       <div class="player-controls">
         <button class="ctrl-btn" onclick="seek(-10)">⏮</button>
-        <button class="play-btn" onclick="togglePlay()"><span id="playIcon">⏸</span></button>
+        <button class="play-btn" onclick="togglePlay()" aria-label="Reproducir o pausar música">
+  <span id="playIcon">❚❚</span>
+</button>
         <button class="ctrl-btn" onclick="seek(10)">⏭</button>
       </div>
     </div>
@@ -521,9 +549,13 @@ background:#120008;
 
     <div class="mama-photo-frame">
   <img src="foto_mama.jpg" alt="Mi mamá" class="mama-photo">
-  </div>
+</div>
 
-    
+<div style="height:65px"></div>
+
+</div>
+</div>
+
 <audio id="song" src="musica.mp3"></audio>
 
 <script>
@@ -534,6 +566,11 @@ background:#120008;
   const canvas = document.getElementById('roseCanvas');
   const ctx = canvas.getContext('2d');
   let W, H;
+
+  if(window.innerWidth < 768){
+  canvas.style.display = 'none';
+  return;
+}
 
   function resize(){ W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; }
   resize();
@@ -638,10 +675,6 @@ background:#120008;
       if(r.y>112) Object.assign(r,makeFalling());
     });
 
-    if(window.innerWidth < 768){
-  return;
-}
-
 requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
@@ -682,11 +715,11 @@ function goTo(id){
     // Controlamos el play con un catch seguro para el navegador
     audio.play()
       .then(() => {
-        document.getElementById('playIcon').textContent = '⏸';
+        document.getElementById('playIcon').textContent = '❚❚';
       })
       .catch(err => {
         console.log("El autoplay requería interacción previa del usuario:", err);
-        document.getElementById('playIcon').textContent = '▶';
+        document.getElementById('playIcon').textContent = '►';
       });
   }
 }
@@ -739,10 +772,10 @@ function togglePlay(){
   const icon = document.getElementById('playIcon');
   if(audio.paused){
     audio.play().catch(e => console.log(e));
-    icon.textContent = '⏸';
+    icon.textContent = '❚❚';
   }else{
     audio.pause();
-    icon.textContent = '▶';
+    icon.textContent = '►';
   }
 }
 
