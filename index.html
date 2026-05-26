@@ -1,3 +1,5 @@
+/*PARA LA MEJOR MAMA DE ESTE MUNDO, AUNQUE TERCA SIEMPRE SONRIENTE c:*/
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -24,7 +26,7 @@ body{font-family:'Cormorant Garamond',serif;overflow-x:hidden}
 .screen{display:none;flex-direction:column;align-items:center;min-height:100vh;padding:40px 20px;position:relative}
 .screen.active{display:flex}
 
-/* Floating hearts */
+/* Corazones Flotantes */
 .floating-hearts{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;overflow:hidden;z-index:1}
 .fh{position:absolute;animation:floatH linear infinite;opacity:0}
 @keyframes floatH{
@@ -33,7 +35,7 @@ body{font-family:'Cormorant Garamond',serif;overflow-x:hidden}
   100%{transform:translateY(-120px) rotate(30deg) scale(1.1);opacity:0}
 }
 
-/* =========  SCREEN 1  ========= */
+/* =========  PANTALLA 1  ========= */
 #s1{justify-content:center}
 
 .s1-glow{
@@ -85,7 +87,7 @@ body{font-family:'Cormorant Garamond',serif;overflow-x:hidden}
 @keyframes btnShine{to{left:160%}}
 .s1-btn:hover{color:#fff;box-shadow:0 0 32px rgba(192,48,74,.5),inset 0 0 22px rgba(192,48,74,.12)}
 
-/* =========  SCREEN 2  ========= */
+/* =========  PANTALLA 2  ========= */
 #s2{padding:28px 20px 70px}
 
 .s2-photo-ring{
@@ -205,14 +207,14 @@ body{font-family:'Cormorant Garamond',serif;overflow-x:hidden}
   backdrop-filter:blur(14px);
   overflow:hidden;
 }
-/* Shimmer sweep */
+/*Barrido de Brillo*/
 .card-border::before{
   content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;
   background:linear-gradient(90deg,transparent,rgba(255,170,190,.05),transparent);
   animation:cardShimmer 4s linear infinite;
 }
 @keyframes cardShimmer{to{left:160%}}
-/* Top-left corner */
+/*Esquina superior izquierda*/
 .card-border::after{
   content:'';position:absolute;
   top:-1px;left:-1px;width:22px;height:22px;
@@ -222,7 +224,7 @@ body{font-family:'Cormorant Garamond',serif;overflow-x:hidden}
   position:absolute;bottom:-1px;right:-1px;width:22px;height:22px;
   border-bottom:2px solid #c0304a;border-right:2px solid #c0304a;
 }
-/* Ambient glow inside card */
+/* Resplandor alrededor de la tarjeta */
 .card-glow{
   position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);
   width:200px;height:80px;
@@ -238,7 +240,7 @@ body{font-family:'Cormorant Garamond',serif;overflow-x:hidden}
   text-shadow:0 0 24px rgba(255,80,100,.7);
 }
 
-/* Text paragraphs — reveal on scroll into view */
+/* Parrafos de Texto: se muestran al desplazarse */
 .card-text{
   font-family:'Cormorant Garamond',serif;font-style:italic;
   font-size:17.5px;line-height:2.1;color:#daaab8;
@@ -270,7 +272,7 @@ body{font-family:'Cormorant Garamond',serif;overflow-x:hidden}
   animation-fill-mode:both;
 }
 .card-signature.visible{opacity:1;transform:translateY(0)}
-/* Writing cursor effect on signature */
+/* Efecto de cursor de escritura en la firma */
 .card-signature.visible::after{
   content:'|';
   animation:cursor .7s step-end infinite;
@@ -278,7 +280,7 @@ body{font-family:'Cormorant Garamond',serif;overflow-x:hidden}
 }
 @keyframes cursor{0%,100%{opacity:1}50%{opacity:0}}
 
-/* =========  SEPARATOR / BOUQUET  ========= */
+/* =========  Separador / RAMO  ========= */
 .full-sep{
   display:flex;align-items:center;gap:12px;
   width:100%;max-width:360px;margin:34px 0 12px;z-index:2;
@@ -349,7 +351,7 @@ background:#120008;
 
 <div class="app" id="app">
 
-  <!-- ======= SCREEN 1 ======= -->
+  <!-- ======= PANTALLA 1 ======= -->
   <div class="screen active" id="s1">
     <div class="s1-glow"></div>
     <div class="s1-heart" onclick="goTo('s2')">
@@ -374,7 +376,7 @@ background:#120008;
     <button class="s1-btn" onclick="goTo('s2')">TOCA PARA ABRIR</button>
   </div>
 
-  <!-- ======= SCREEN 2 ======= -->
+  <!-- ======= Pantalla 2 ======= -->
   <div class="screen" id="s2">
 
     <div class="s2-photo-ring">
@@ -476,7 +478,7 @@ background:#120008;
 
 <script>
 /* ============================================================
-   ROSE CANVAS BACKGROUND
+   FONDO DE LIENZO DE ROSAS (Canvas + JS)
    ============================================================ */
 (function(){
   const canvas = document.getElementById('roseCanvas');
@@ -592,7 +594,7 @@ background:#120008;
 })();
 
 /* ============================================================
-   FLOATING HEARTS
+   CORAZONES FLOTANTES (DOM + CSS Animations)
    ============================================================ */
 (function(){
   const c=document.getElementById('fhContainer');
@@ -611,7 +613,7 @@ background:#120008;
 })();
 
 /* ============================================================
-   REAL MUSIC PLAYER & NAVIGATION CONTROLLER
+   REPRODUCTOR DE MÚSICA REAL & CONTROLADOR DE NAVEGACIÓN
    ============================================================ */
 // Declaramos el elemento de audio al principio para evitar problemas de hoisting
 const audio = document.getElementById('song');
@@ -636,7 +638,7 @@ function goTo(id){
 }
 
 /* ============================================================
-   CARD REVEAL (stagger + IntersectionObserver for scroll)
+   REVELACIÓN DE TARJETAS (escalonamiento + IntersectionObserver para desplazamiento)
    ============================================================ */
 function revealCard(){
   ['ct1','ct2','ct3','csig'].forEach((id,i)=>{
@@ -656,7 +658,7 @@ const obs=new IntersectionObserver(entries=>{
 });
 
 /* ============================================================
-   PLAYER FUNCTIONS
+   FUNCIONES DEL REPRODUCTOR
    ============================================================ */
 function formatTime(time){
   if(isNaN(time)) return "0:00"; // Evita el bug del NaN:NaN antes de cargar el archivo
